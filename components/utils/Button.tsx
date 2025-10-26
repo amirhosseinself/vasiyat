@@ -27,9 +27,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       "rounded-xl font-yekan font-medium transition-all duration-200 backdrop-blur-[2px] border border-white/20 shadow-sm";
     const variantStyles = {
       primary:
-        "bg-primary/10 text-white hover:bg-primary/50 focus:ring-2 focus:ring-primary/50",
+        "bg-primary/10 text-white hover:bg-primary/30 focus:ring-2 focus:ring-primary/50",
       secondary:
-        "bg-secondary/10 text-white hover:bg-secondary/50 focus:ring-2 focus:ring-secondary/50",
+        "bg-secondary/10 text-white hover:bg-secondary/20 focus:ring-2 focus:ring-secondary/50",
     };
     const sizeStyles = {
       sm: "px-3 py-1 text-sm",
