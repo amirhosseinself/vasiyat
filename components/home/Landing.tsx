@@ -1,9 +1,8 @@
-// components/home/Landing.tsx
 "use client";
 
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+
 import Button from "@/components/utils/Button";
 
 const Landing = () => {
@@ -29,7 +28,7 @@ const Landing = () => {
         <p className="text-xl text-white mt-4 max-w-2xl mx-auto">
           {t("heroSubtitle")}
         </p>
-        <Button variant="secondary" size="lg" href="/login">
+        <Button className="bg-primary" variant="secondary" size="lg" href="/login">
           {t("start")}
         </Button>
       </main>

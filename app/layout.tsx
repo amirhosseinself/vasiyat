@@ -5,7 +5,7 @@ import Navbar from "@/components/utils/Navbar";
 import Footer from "@/components/utils/Footer";
 
 // @ts-expect-error - side-effect import of global CSS without a declaration file
-import "./globals.css";
+import "./styles/globals.css";
 
 export const metadata: Metadata = {
   title: "وصیت‌نامه",
