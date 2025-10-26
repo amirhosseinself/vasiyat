@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 
+import Navbar from "@/components/utils/Navbar";
+import Footer from "@/components/utils/Footer";
+
 // @ts-expect-error - side-effect import of global CSS without a declaration file
 import "./globals.css";
 
@@ -17,7 +20,11 @@ export default async function RootLayout({
   return (
     <html lang={"fa"} dir="rtl">
       <body className="bg-gray-50 text-gray-900 font-yekan antialiased">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
