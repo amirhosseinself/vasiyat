@@ -1,11 +1,19 @@
 /* ============= Theme Configuration ============= */
 @theme {
   /* 🎨 Colors */
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
+  --color-primary: #2f3c7e;
+  --color-primary-hover: #1e2a5e;
 
-  --color-secondary: #10b981;
-  --color-secondary-hover: #059669;
+  --color-secondary: #fbeaeb;
+  --color-accent: #d72638;
+
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+
+  --color-primary-text: #1e1e1e;
+
+  --color-text: #1e1e1e;
+  --color-muted: #6b7280;
 
   /* 🅰️ Fonts */
   --font-yekan: "IRANYekanX", sans-serif;
@@ -17,5 +25,6 @@
   html {
     font-family: var(--font-yekan);
     background-color: var(--color-background);
+    color: var(--color-text);
   }
 }
