@@ -1,7 +1,15 @@
+// components/home/Landing.tsx
 "use client";
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
+import {
+  UserGroupIcon,
+  DocumentTextIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/24/outline";
 
 import Button from "@/components/utils/Button";
 
@@ -21,37 +29,94 @@ const Landing = () => {
     >
       <div className="absolute inset-0 bg-black/40"></div>
 
-      <main className="container-xl relative z-10">
-        <h1 className="text-4xl md:text-5xl max-w-2xl leading-tight font-bold text-white mb-6 mt-20">
+      <main className="container-xl relative z-10 flex flex-col items-start">
+        <motion.h1
+          className="text-4xl md:text-5xl max-w-2xl leading-tight font-bold text-white mb-6 mt-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           {t("heroTitle")}
-        </h1>
-        <p className="text-xl text-gray-100 mt-4 max-w-2xl ">
+        </motion.h1>
+        <motion.p
+          className="text-xl text-gray-100 mt-4 max-w-2xl text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           {t("heroSubtitle")}
-        </p>
-        <Button className="mt-4" variant="primary" size="lg" href="/login">
-          {t("start")}
-        </Button>
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Button className="mt-4" variant="primary" size="lg" href="/login">
+            <span className="flex items-center gap-2">
+              {t("start")}
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </span>
+          </Button>
+        </motion.div>
       </main>
 
-      <section
-        className="
-          bg-black/20 backdrop-blur-[1px]
-           relative grid grid-cols-1 md:grid-cols-3 gap-4 p-4 z-10
-           "
+      <motion.section
+        className="bg-black/20 backdrop-blur-[1px] relative z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className=" p-6 rounded-lg text-white text-center shadow-md">
-          <h3 className="text-3xl font-bold">{stats.users}+</h3>
-          <p>{t("statsUsers")}</p>
+        <div className="container-xl grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            {
+              value: stats.users,
+              label: t("statsUsers"),
+              desc: t("statsUsersDesc"),
+              icon: UserGroupIcon,
+            },
+            {
+              value: stats.wills,
+              label: t("statsWills"),
+              desc: t("statsWillsDesc"),
+              icon: DocumentTextIcon,
+            },
+            {
+              value: stats.sent,
+              label: t("statsSent"),
+              desc: t("statsSentDesc"),
+              icon: PaperAirplaneIcon,
+            },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              className="p-4 pb-2 rounded-lg text-white text-center shadow-md "
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
+            >
+              <h3 className="text-4xl font-bold flex justify-center items-center gap-2 mb-4">
+                <stat.icon className="size-10" />
+                <CountUp start={0} end={stat.value} duration={2.5} />+
+              </h3>
+              <p className="text-lg">{stat.label}</p>
+              <p className="text-sm opacity-80">{stat.desc}</p>
+            </motion.div>
+          ))}
         </div>
-        <div className=" p-6 rounded-lg text-white text-center shadow-md">
-          <h3 className="text-3xl font-bold">{stats.wills}+</h3>
-          <p>{t("statsWills")}</p>
-        </div>
-        <div className=" p-6 rounded-lg text-white text-center shadow-md">
-          <h3 className="text-3xl font-bold">{stats.sent}+</h3>
-          <p>{t("statsSent")}</p>
-        </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
