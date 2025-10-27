@@ -1,51 +1,38 @@
+// components/home/Landing.tsx
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import CountUp from "react-countup";
+import {
+  UserGroupIcon,
+  DocumentTextIcon,
+  PaperAirplaneIcon,
+  ArrowLeftIcon,
+} from "@heroicons/react/24/outline";
 
 import Button from "@/components/utils/Button";
 
 const Landing2 = () => {
   const t = useTranslations("landing");
+  const [stats] = useState({
+    users: 500,
+    wills: 200,
+    sent: 100,
+  });
 
   return (
-    <div className="h-screen bg-blue-50 relative" dir="rtl">
-      {/* bg */}
-      <div className="w-full aspect-[4.3/1] relative">
-        <Image
-          src={"/images/home/lake.webp"}
-          alt="دریاچه"
-          fill
-          className="object-cover"
-        ></Image>
-        <div className="absolute h-20 bottom-0 w-full bg-gradient-to-white"></div>
-      </div>
-      {/* decor */}
-      <div className="absolute top-0 left-0 size-full overflow-hidden opacity-40 z-0 pointer-events-none">
-        <svg className="size-full" viewBox="0 0 1440 250">
-          <path
-            fill="url(#gradient)"
-            d="M0,400C200,300,400,500,720,400C1040,300,1240,500,1440,400V600H0Z"
-          />
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop
-                offset="0%"
-                style={{ stopColor: "#4B6CB7", stopOpacity: 0.3 }}
-              />
-              <stop
-                offset="100%"
-                style={{ stopColor: "#89CFF0", stopOpacity: 0 }}
-              />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-      {/* main text */}
-      <main className="container flex flex-col items-center text-center pt-4 pb-12 z-10">
+    <div
+      className="h-screen pt-[75px] bg-cover bg-center relative flex flex-col justify-between"
+      style={{ backgroundImage: "url(/images/home/landing.jpg)" }}
+      dir="rtl"
+    >
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      <main className="container relative z-10 flex flex-col items-start">
         <motion.h1
-          className="text-4xl md:text-5xl max-w-3xl leading-tight font-bold text-primary-text"
+          className="text-4xl md:text-5xl max-w-2xl leading-tight font-bold text-white mb-6 mt-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -53,7 +40,7 @@ const Landing2 = () => {
           {t("heroTitle")}
         </motion.h1>
         <motion.p
-          className="text-xl text-gray-600 mt-4 max-w-2xl"
+          className="text-xl text-gray-100 mt-4 max-w-2xl text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -64,16 +51,61 @@ const Landing2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6"
         >
-          <Button variant="primary" size="lg" href="/login">
-            {t("start")}
-          </Button>
-          <Button variant="secondary" size="lg" href="/about" className="mr-4">
-            بیشتر بدانید
+          <Button className="mt-4" variant="primary" size="lg" href="/login">
+            <span className="flex items-center gap-2">
+              {t("start")}
+
+              <ArrowLeftIcon className="size-6" />
+            </span>
           </Button>
         </motion.div>
       </main>
+
+      <motion.section
+        className="bg-black/20 backdrop-blur-[1px] relative z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="container flex justify-between items-center gap-4">
+          {[
+            {
+              value: stats.users,
+              label: t("statsUsers"),
+              desc: t("statsUsersDesc"),
+              icon: UserGroupIcon,
+            },
+            {
+              value: stats.wills,
+              label: t("statsWills"),
+              desc: t("statsWillsDesc"),
+              icon: DocumentTextIcon,
+            },
+            {
+              value: stats.sent,
+              label: t("statsSent"),
+              desc: t("statsSentDesc"),
+              icon: PaperAirplaneIcon,
+            },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              className="pt-4 pb-2 rounded-lg text-white text-center shadow-md "
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
+            >
+              <h3 className="text-4xl font-bold flex justify-center items-center gap-2 mb-4">
+                <stat.icon className="size-10" />
+                <CountUp start={0} end={stat.value} duration={2.5} />+
+              </h3>
+              <p className="text-lg">{stat.label}</p>
+              <p className="text-sm opacity-80">{stat.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
     </div>
   );
 };
