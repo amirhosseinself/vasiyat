@@ -1,12 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "./Button";
 import clsx from "clsx";
@@ -14,13 +9,6 @@ import clsx from "clsx";
 const Navbar = () => {
   const t = useTranslations("landing");
   const { scrollY } = useScroll();
-
-  // تغییر رنگ متن از سفید به رنگ اصلی بعد از اسکرول
-  const textColor = useTransform(
-    scrollY,
-    [0, 100],
-    ["#ffffff", "var(--color-primary-text)"]
-  );
 
   // وضعیت اسکرول برای کنترل نمایش پس‌زمینه
   const [scrolled, setScrolled] = useState(false);

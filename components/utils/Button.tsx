@@ -73,6 +73,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // 🌀 Motion config
     const motionProps = {
       initial: { background: normal },
+      animate: { background: normal }, // ✅ واکنش به تغییر variant
       whileHover: {
         background: hover,
         scale: 1.03,
@@ -107,11 +108,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     if (href) {
       return (
         <Link href={href} className="inline-block">
-          <motion.div
-            {...motionProps}
-            className={combinedClass}
-            style={{ background: normal }}
-          >
+          <motion.div {...motionProps} className={combinedClass}>
             {loading ? Loader : children}
           </motion.div>
         </Link>
@@ -126,7 +123,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={combinedClass}
         disabled={loading}
         {...props}
-        style={{ background: normal }}
       >
         {loading ? Loader : children}
       </motion.button>
