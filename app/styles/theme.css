@@ -1,30 +1,85 @@
-/* ============= Theme Configuration ============= */
+/* theme.css */
 @theme {
   /* 🎨 Colors */
-  --color-primary: #2f3c7e;
-  --color-primary-hover: #1e2a5e;
-
-  --color-secondary: #fbeaeb;
-  --color-accent: #d72638;
-
-  --color-background: #fafafa;
-  --color-surface: #ffffff;
-
-  --color-primary-text: #1e1e1e;
-
-  --color-text: #1e1e1e;
-  --color-muted: #6b7280;
-
-  /* 🅰️ Fonts */
-  --font-yekan: "IRANYekanX", sans-serif;
-  --font-english: "Inter", sans-serif;
+  --color-primary: #4b6cb7; /* آبی ملایم شبیه Calm */
+  --color-primary-hover: #3a559f; /* آبی تیره‌تر برای hover */
+  --color-secondary: #89cff0; /* آبی آسمانی */
+  --color-secondary-light: #fbedeb; /* صورتی روشن */
+  --color-accent: #f4a261; /* نارنجی ملایم */
+  --color-background: #fafafa; /* خاکستری روشن */
+  --color-surface: #ffffff; /* سفید */
+  --color-primary-text: #1e1e1e; /* مشکی */
+  --color-text: #1e1e1e; /* مشکی */
+  --color-muted: #6b7280; /* خاکستری */
 }
 
-/* ============= Base Styles ============= */
+@layer utilities {
+  .bg-primary-gradient {
+    background: linear-gradient(
+      45deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+  }
+  .bg-primary-gradient-hover {
+    background: linear-gradient(
+      45deg,
+      var(--color-primary-hover),
+      var(--color-primary)
+    );
+  }
+
+  .bg-secondary-gradient {
+    background: linear-gradient(
+      45deg,
+      var(--color-secondary),
+      var(--color-secondary-light)
+    );
+  }
+  .bg-secondary-gradient-hover {
+    background: linear-gradient(
+      45deg,
+      var(--color-secondary-light),
+      var(--color-secondary)
+    );
+  }
+}
+
+/* استایل‌های پایه */
 @layer base {
   html {
     font-family: var(--font-yekan);
     background-color: var(--color-background);
     color: var(--color-text);
+  }
+  h1 {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 700; /* font-bold */
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 600; /* font-semibold */
+    line-height: 1.25;
+  }
+  h3 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600; /* font-semibold */
+    line-height: 1.3;
+  }
+  h4 {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 500; /* font-medium */
+    line-height: 1.35;
+  }
+  h5 {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 500; /* font-medium */
+    line-height: 1.4;
+  }
+  h6 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    line-height: 1.45;
   }
 }
