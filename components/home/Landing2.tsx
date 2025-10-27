@@ -45,7 +45,7 @@ const Landing2 = () => {
       {/* main text */}
       <main className="container flex flex-col items-center text-center pt-4 pb-12 z-10">
         <motion.h1
-          className="text-4xl md:text-5xl max-w-3xl leading-tight font-bold text-gray-900"
+          className="text-4xl md:text-5xl max-w-3xl leading-tight font-bold text-primary-text"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
