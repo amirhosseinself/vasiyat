@@ -16,7 +16,10 @@ const familySchema = z
   .string()
   .min(2, "نام خانوادگی باید حداقل ۲ حرف باشد")
   .max(30, "نام خانوادگی بیش از حد طولانی است");
-const otpSchema = z.string().min(4, "کد تأیید باید حداقل ۴ رقم باشد");
+const otpSchema = z
+  .string()
+  .min(6, "کد تأیید باید 6 رقم باشد")
+  .max(6, "کد تأیید باید 6 رقم باشد");
 
 // ✅ کامپوننت ورودی با لیبل شناور
 type FloatingInputProps = {
@@ -40,7 +43,9 @@ const FloatingInput = ({
   const isFilled = value.trim().length > 0;
 
   return (
-    <div className="relative w-full mb-7 text-right">
+    <div
+      className={clsx("relative w-full mb-7", type === "text" ? "rtl" : "ltr")}
+    >
       <input
         id={id}
         type={type}
@@ -65,16 +70,16 @@ const FloatingInput = ({
           // حالت پیش‌فرض وقتی خالیه و بدون فوکوس
           !isFilled
             ? "top-4 text-lg text-gray-400"
-            : "-top-5 text-sm text-white",
+            : "-top-6 text-sm text-white",
           // اما اگر فوکوس شد، همیشه به حالت کوچک بره
-          "peer-focus:-top-5 peer-focus:text-sm peer-focus:text-white"
+          "peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white"
         )}
       >
         {label}
       </label>
 
       {error && (
-        <p id={`${id}-error`} className="text-red-400 text-sm mt-1">
+        <p id={`${id}-error`} className="text-red-400 text-sm mt-1 rtl">
           {error}
         </p>
       )}
