@@ -43,7 +43,7 @@ const FAQ = () => {
 
   return (
     <section className="py-16 bg-white" id="faq">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,12 +54,10 @@ const FAQ = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             {t("title")}
           </h2>
-          <p className="text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
-            {t("subtitle")}
-          </p>
+          <p className="text-lg text-gray-600 mt-3 mx-auto">{t("subtitle")}</p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
