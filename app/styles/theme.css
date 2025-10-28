@@ -11,6 +11,7 @@
   --color-primary-text: #1a3e6f; /* آبی خیلی تیره */
   --color-text: #1e1e1e; /* مشکی */
   --color-muted: #6b7280; /* خاکستری */
+  --color-input-background: #172e57;
 }
 
 @layer utilities {
