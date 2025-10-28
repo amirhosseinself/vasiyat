@@ -5,6 +5,7 @@ import Security from "@/components/home/Security";
 import Testimonials from "@/components/home/Testimonials";
 // import Features from "@/components/home/Features";
 import EmotionalSection from "@/components/home/EmotionalSection";
+import FAQ from "@/components/home/FAQ";
 
 // import FinalCTA from "@/components/home/FinalCTA";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Testimonials />
       {/* ✨ ویژگی‌ها */}
       {/* <Features /> */}
+      <FAQ />
       <EmotionalSection />
       {/* 💌 دعوت به اقدام پایانی */}
       {/* <FinalCTA /> */}
