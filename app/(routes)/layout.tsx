@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
 
-import "./styles/globals.css";
+import Navbar from "@/components/utils/Navbar";
+import Footer from "@/components/utils/Footer";
 
 export const metadata: Metadata = {
   title: "وصیت‌نامه",
-  description: "با پول یه قهوه وصیت‌نامه خودت رو بنویس ",
+  description: "برای آینده. وصیت‌نامه خودت رو بنویس ",
 };
 
-export default async function RootLayout({
+export default async function RoutesLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -16,7 +16,9 @@ export default async function RootLayout({
   return (
     <html lang={"fa"} dir="rtl">
       <body className="bg-gray-50 text-gray-900 font-yekan antialiased">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );
