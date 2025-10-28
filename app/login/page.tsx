@@ -1,172 +1,28 @@
+// app/login/page.tsx
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import clsx from "clsx";
 import Button from "@/components/utils/Button";
-
-// ✅ اسکیمای اعتبارسنجی با Zod
-const phoneSchema = z.string().regex(/^09\d{9}$/, "شماره موبایل معتبر نیست");
-const nameSchema = z
-  .string()
-  .min(2, "نام باید حداقل ۲ حرف باشد")
-  .max(30, "نام بیش از حد طولانی است");
-const familySchema = z
-  .string()
-  .min(2, "نام خانوادگی باید حداقل ۲ حرف باشد")
-  .max(30, "نام خانوادگی بیش از حد طولانی است");
-const otpSchema = z
-  .string()
-  .min(6, "کد تأیید باید 6 رقم باشد")
-  .max(6, "کد تأیید باید 6 رقم باشد");
-
-// ✅ کامپوننت ورودی با لیبل شناور
-type FloatingInputProps = {
-  id: string;
-  label: string;
-  type: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: string;
-};
-
-const FloatingInput = ({
-  id,
-  label,
-  type,
-  value,
-  onChange,
-  error,
-}: FloatingInputProps) => {
-  // اگر value موجود باشه، لیبل باید در حالت "کوچک‌شده" قرار بگیره
-  const isFilled = value.trim().length > 0;
-
-  return (
-    <div
-      className={clsx("relative w-full mb-7", type === "text" ? "rtl" : "ltr")}
-    >
-      <input
-        id={id}
-        type={type}
-        value={value}
-        onChange={onChange}
-        className={clsx(
-          "peer w-full border-b-2 p-2 rounded-2xl pt-5 text-lg text-white bg-white/5 focus:outline-none transition-all",
-          type === "number" || type === "tel" ? "text-center" : "",
-          error
-            ? "border-red-400 focus:border-red-400"
-            : "border-gray-300 focus:border-white"
-        )}
-        placeholder=" "
-        aria-invalid={!!error}
-        aria-describedby={error ? `${id}-error` : undefined}
-      />
-
-      <label
-        htmlFor={id}
-        className={clsx(
-          "absolute right-2 transition-all pointer-events-none",
-          // حالت پیش‌فرض وقتی خالیه و بدون فوکوس
-          !isFilled
-            ? "top-4 text-lg text-gray-400"
-            : "-top-6 text-sm text-white",
-          // اما اگر فوکوس شد، همیشه به حالت کوچک بره
-          "peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white"
-        )}
-      >
-        {label}
-      </label>
-
-      {error && (
-        <p id={`${id}-error`} className="text-red-400 text-sm mt-1 rtl">
-          {error}
-        </p>
-      )}
-    </div>
-  );
-};
+import FloatingInput from "@/components/utils/FloatingInput";
+import { useLogin } from "./useLogin";
 
 const LoginPage = () => {
-  const router = useRouter();
-
-  const [phone, setPhone] = useState("");
-  const [name, setName] = useState("");
-  const [family, setFamily] = useState("");
-  const [otp, setOtp] = useState("");
-  const [hasAccount, setHasAccount] = useState<null | boolean>(null);
-  const [step, setStep] = useState<"check" | "otp">("check");
-  const [loading, setLoading] = useState(false);
-
-  // خطاهای جدا برای هر فیلد
-  const [errors, setErrors] = useState<{
-    phone?: string;
-    name?: string;
-    family?: string;
-    otp?: string;
-  }>({});
-
-  // ✳️ بررسی شماره تلفن
-  const handleCheckUser = () => {
-    const result = phoneSchema.safeParse(phone);
-    if (!result.success) {
-      setErrors({ phone: result.error.issues[0].message });
-      return;
-    }
-    setErrors({});
-    setLoading(true);
-
-    setTimeout(() => {
-      // تست بدون API
-      if (phone === "09370529694") {
-        setHasAccount(true);
-        setStep("otp");
-      } else {
-        setHasAccount(false);
-      }
-      setLoading(false);
-    }, 800);
-  };
-
-  // ✳️ ارسال کد ثبت‌نام برای کاربر جدید
-  const handleSendOtp = () => {
-    const nameCheck = nameSchema.safeParse(name);
-    const familyCheck = familySchema.safeParse(family);
-    const newErrors: typeof errors = {};
-
-    if (!nameCheck.success) newErrors.name = nameCheck.error.issues[0].message;
-    if (!familyCheck.success)
-      newErrors.family = familyCheck.error.issues[0].message;
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    setErrors({});
-    setLoading(true);
-
-    setTimeout(() => {
-      setStep("otp");
-      setLoading(false);
-    }, 800);
-  };
-
-  // ✳️ تأیید کد OTP
-  const handleVerifyOtp = () => {
-    const otpCheck = otpSchema.safeParse(otp);
-    if (!otpCheck.success) {
-      setErrors({ otp: otpCheck.error.issues[0].message });
-      return;
-    }
-
-    setErrors({});
-    setLoading(true);
-
-    setTimeout(() => {
-      router.push("/dashboard");
-    }, 1000);
-  };
+  const {
+    phone,
+    name,
+    family,
+    otp,
+    setPhone,
+    setName,
+    setFamily,
+    setOtp,
+    hasAccount,
+    step,
+    errors,
+    loading,
+    handleCheckUser,
+    handleSendOtp,
+    handleVerifyOtp,
+  } = useLogin();
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-linear-to-b from-[#156494] to-[#2f2f7e] px-4">
@@ -175,7 +31,7 @@ const LoginPage = () => {
           ورود / ثبت‌نام
         </h2>
 
-        {/* مرحله ۱: شماره تلفن */}
+        {/* Step 1: Phone */}
         {hasAccount === null && (
           <>
             <FloatingInput
@@ -198,7 +54,7 @@ const LoginPage = () => {
           </>
         )}
 
-        {/* مرحله ۲: نام و نام خانوادگی */}
+        {/* Step 2: New User Info */}
         {hasAccount === false && step === "check" && (
           <>
             <FloatingInput
@@ -229,7 +85,7 @@ const LoginPage = () => {
           </>
         )}
 
-        {/* مرحله ۳: کد OTP */}
+        {/* Step 3: OTP */}
         {(hasAccount === true || step === "otp") && (
           <>
             <FloatingInput
