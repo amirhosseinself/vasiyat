@@ -69,7 +69,12 @@ const Landing = () => {
           <Button variant="primary" size="lg" href="/login">
             {t("start")}
           </Button>
-          <Button variant="secondary" size="lg" href="/about" className="mr-4">
+          <Button
+            variant="secondary"
+            size="lg"
+            href="#how-it-works"
+            className="mr-4"
+          >
             بیشتر بدانید
           </Button>
         </motion.div>
