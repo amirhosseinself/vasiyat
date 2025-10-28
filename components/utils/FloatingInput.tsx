@@ -32,7 +32,7 @@ const FloatingInput = ({
         value={value}
         onChange={onChange}
         className={clsx(
-          "peer w-full border-b-2 p-2 rounded-2xl pt-5 text-lg text-white bg-white/5 focus:outline-none transition-all",
+          "peer w-full border-b-2 p-2 rounded-2xl pt-4 text-lg text-white bg-white/5 focus:outline-none transition-all",
           type === "number" || type === "tel" ? "text-center" : "",
           error
             ? "border-red-400 focus:border-red-400"
@@ -43,11 +43,11 @@ const FloatingInput = ({
       <label
         htmlFor={id}
         className={clsx(
-          "absolute right-2 transition-all pointer-events-none",
+          "absolute transition-all pointer-events-none",
+          "peer-focus:right-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white",
           !isFilled
-            ? "top-4 text-lg text-gray-400"
-            : "-top-6 text-sm text-white",
-          "peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white"
+            ? "right-4 top-3.5 text-lg text-gray-400"
+            : "right-3 -top-6 text-sm text-white"
         )}
       >
         {label}

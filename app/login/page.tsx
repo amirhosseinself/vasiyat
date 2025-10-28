@@ -25,7 +25,7 @@ const LoginPage = () => {
   } = useLogin();
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-linear-to-b from-[#156494] to-[#2f2f7e] px-4">
+    <div className="flex items-center justify-center min-h-screen bg-linear-to-b from-[#1e77ae] to-[#373787] px-4">
       <div className="bg-black/10 shadow-lg rounded-2xl p-10 w-full max-w-lg min-h-[300px] text-center">
         <h2 className="text-4xl font-semibold text-white mb-16">
           ورود / ثبت‌نام

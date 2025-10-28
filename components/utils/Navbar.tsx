@@ -5,6 +5,7 @@ import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "./Button";
 import clsx from "clsx";
+import Link from "next/link";
 
 const Navbar = () => {
   const t = useTranslations("landing");
@@ -46,7 +47,7 @@ const Navbar = () => {
             scrolled ? "text-primary-text" : "text-white"
           )}
         >
-          وصیت‌نامه
+          <Link href={"/"}>وصیت‌نامه</Link>
         </motion.div>
 
         <Button
