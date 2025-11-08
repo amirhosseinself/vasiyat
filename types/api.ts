@@ -8,8 +8,12 @@ export interface LoginRequest {
 export interface LoginResponse {
   success: boolean;
   message: string;
-  temp?: string; // کد موقت برای مرحله بعد
-  userExists?: boolean; // signup اگر true باشه باید به صفحه signup بره
+  data: {
+    newOtp: {
+      temp: string;
+      mobile: string;
+    };
+  };
 }
 
 export interface SignupRequest {

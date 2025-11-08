@@ -2,7 +2,6 @@
 import axiosInstance from "@/lib/axios";
 import type {
   LoginRequest,
-  LoginResponse,
   SignupRequest,
   SignupResponse,
   VerifyOtpRequest,
@@ -15,12 +14,22 @@ class AuthService {
    * درخواست OTP - مرحله اول
    * POST /api/v1/users/otp
    */
-  async requestOtp(data: LoginRequest): Promise<ApiResponse<LoginResponse>> {
+  async requestOtp(
+    data: LoginRequest
+  ): Promise<{ temp: string; mobile: string }> {
     const response = await axiosInstance.post("/v1/users/otp", {
       mobile: data.phone,
       device_id: this.getDeviceId(),
     });
-    return response.data;
+
+    const temp = response.data?.data?.newOtp?.temp;
+    const mobile = response.data?.data?.newOtp?.mobile;
+
+    if (!temp || !mobile) {
+      throw new Error("Invalid OTP response format");
+    }
+
+    return { temp, mobile };
   }
 
   /**

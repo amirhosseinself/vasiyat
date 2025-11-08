@@ -43,12 +43,7 @@ const LoginPage = () => {
 
     try {
       const response = await requestOtpMutation.mutateAsync({ phone });
-
-      // ذخیره temp برای مرحله بعد
-      if (response.data.temp) {
-        setTemp(response.data.temp);
-      }
-
+      setTemp(response.temp);
       setStep("otp");
     } catch (error: unknown) {
       const errorMessage = getErrorMessage(error, "خطا در ارسال کد");
