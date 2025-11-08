@@ -1,92 +1,270 @@
-/* theme.css */
+/* ✨ Yadgar Design System - Emotionally Elegant Theme */
 @theme {
-  /* 🎨 Colors */
-  --color-primary: #4b6cb7; /* آبی ملایم شبیه Calm */
-  --color-primary-hover: #3a559f; /* آبی تیره‌تر برای hover */
-  --color-secondary: #89cff0; /* آبی آسمانی */
-  --color-secondary-light: #fbedeb; /* صورتی روشن */
-  --color-accent: #f4a261; /* نارنجی ملایم */
-  --color-background: #fafafa; /* خاکستری روشن */
-  --color-surface: #ffffff; /* سفید */
-  --color-primary-text: #1a3e6f; /* آبی خیلی تیره */
-  --color-text: #1e1e1e; /* مشکی */
-  --color-muted: #6b7280; /* خاکستری */
-  --color-input-background: #172e57;
+  /* 🎨 Primary Colors - Deep, Trustworthy Blues */
+  --color-primary: #2c5282; /* Navy blue - trust & depth */
+  --color-primary-light: #4299e1; /* Lighter blue - hope */
+  --color-primary-dark: #1a365d; /* Deep navy - stability */
+  --color-primary-hover: #2b6cb0; /* Interactive state */
+
+  /* 💜 Secondary Colors - Warm, Emotional Purples */
+  --color-secondary: #805ad5; /* Royal purple - dignity & memory */
+  --color-secondary-light: #9f7aea; /* Lighter purple - gentle */
+  --color-secondary-dark: #6b46c1; /* Deep purple - profound */
+
+  /* ✨ Accent Colors - Warm Gold & Sunset */
+  --color-accent: #d69e2e; /* Warm gold - precious moments */
+  --color-accent-light: #ecc94b; /* Light gold - warmth */
+  --color-accent-soft: #fbd38d; /* Soft gold - gentle touch */
+
+  /* 🌅 Emotional Gradient Colors */
+  --color-gradient-start: #667eea; /* Indigo - dreams */
+  --color-gradient-middle: #764ba2; /* Purple - memory */
+  --color-gradient-end: #f093fb; /* Pink - love */
+
+  /* 🤍 Neutral & Background Colors */
+  --color-background: #f7fafc; /* Very light gray - peaceful */
+  --color-background-secondary: #edf2f7; /* Light gray - calm */
+  --color-surface: #ffffff; /* Pure white - clarity */
+  --color-surface-elevated: #ffffff; /* Elevated surfaces */
+
+  /* 📝 Text Colors */
+  --color-text-primary: #1a202c; /* Almost black - readable */
+  --color-text-secondary: #4a5568; /* Medium gray - subdued */
+  --color-text-tertiary: #718096; /* Light gray - subtle */
+  --color-text-muted: #a0aec0; /* Very light - hints */
+
+  /* 💙 Semantic Colors */
+  --color-success: #38a169; /* Green - achievement */
+  --color-success-light: #9ae6b4; /* Light green */
+  --color-warning: #dd6b20; /* Orange - caution */
+  --color-warning-light: #fbd38d; /* Light orange */
+  --color-error: #e53e3e; /* Red - alert */
+  --color-error-light: #fc8181; /* Light red */
+  --color-info: #3182ce; /* Blue - information */
+  --color-info-light: #90cdf4; /* Light blue */
+
+  /* 🎯 Interactive Elements */
+  --color-input-background: #edf2f7; /* Input fields */
+  --color-input-border: #cbd5e0; /* Input borders */
+  --color-input-focus: #4299e1; /* Focus state */
+  --color-overlay: rgba(26, 32, 44, 0.7); /* Modal overlays */
+  --color-overlay-light: rgba(26, 32, 44, 0.3); /* Light overlays */
+
+  /* 🌟 Special Effects */
+  --color-glow-primary: rgba(66, 153, 225, 0.3); /* Primary glow */
+  --color-glow-secondary: rgba(128, 90, 213, 0.3); /* Secondary glow */
+  --color-glow-accent: rgba(214, 158, 46, 0.3); /* Accent glow */
+
+  /* 📏 Spacing System */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 3rem; /* 48px */
+  --spacing-3xl: 4rem; /* 64px */
+
+  /* 🔲 Border Radius */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* Fully rounded */
+
+  /* 🎭 Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 20px var(--color-glow-primary);
+
+  /* ⏱️ Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @layer utilities {
-  .bg-primary-gradient {
-    background: linear-gradient(
-      45deg,
-      var(--color-primary),
-      var(--color-secondary)
-    );
-  }
-  .bg-primary-gradient-hover {
-    background: linear-gradient(
-      45deg,
-      var(--color-primary-hover),
-      var(--color-primary)
-    );
+  /* 🎨 Gradient Backgrounds - Emotionally Rich */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   }
 
-  .bg-secondary-gradient {
-    background: linear-gradient(
-      45deg,
-      var(--color-secondary),
-      var(--color-secondary-light)
-    );
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary-light) 100%);
   }
-  .bg-secondary-gradient-hover {
-    background: linear-gradient(
-      45deg,
-      var(--color-secondary-light),
-      var(--color-secondary)
-    );
+
+  .bg-gradient-emotional {
+    background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-middle) 50%, var(--color-gradient-end) 100%);
+  }
+
+  .bg-gradient-sunset {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  }
+
+  .bg-gradient-memory {
+    background: linear-gradient(135deg, #2c5282 0%, #805ad5 50%, #d69e2e 100%);
+  }
+
+  .bg-gradient-peaceful {
+    background: linear-gradient(to bottom, #f7fafc 0%, #edf2f7 100%);
+  }
+
+  /* ✨ Glass Morphism Effects */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-effect-dark {
+    background: rgba(26, 32, 44, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* 🌟 Glow Effects */
+  .glow-primary {
+    box-shadow: 0 0 20px var(--color-glow-primary);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px var(--color-glow-secondary);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px var(--color-glow-accent);
+  }
+
+  /* 📱 Container Utilities */
+  .container-custom {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .container-narrow {
+    width: 100%;
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  /* 🎯 Smooth Transitions */
+  .transition-smooth {
+    transition: all var(--transition-base);
+  }
+
+  .transition-smooth-fast {
+    transition: all var(--transition-fast);
+  }
+
+  .transition-smooth-slow {
+    transition: all var(--transition-slow);
   }
 }
 
-/* استایل‌های پایه */
+/* 📝 Base Styles - Typography & Fundamentals */
 @layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
   html {
-    font-family: var(--font-yekan);
+    font-family: var(--font-yekan), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--color-background);
-    color: var(--color-text);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Enhanced Typography Scale */
   h1 {
-    font-size: 3rem; /* text-5xl */
-    font-weight: 700; /* font-bold */
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive */
+    font-weight: 800;
     line-height: 1.2;
-    color: var(--color-primary-text);
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
   }
+
   h2 {
-    font-size: 2.25rem; /* text-4xl */
-    font-weight: 600; /* font-semibold */
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
     line-height: 1.25;
-    color: var(--color-primary-text);
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
   }
+
   h3 {
-    font-size: 1.875rem; /* text-3xl */
-    font-weight: 600; /* font-semibold */
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
     line-height: 1.3;
-    color: var(--color-primary-text);
+    color: var(--color-text-primary);
   }
+
   h4 {
-    font-size: 1.5rem; /* text-2xl */
-    font-weight: 500; /* font-medium */
+    font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+    font-weight: 600;
     line-height: 1.35;
+    color: var(--color-text-secondary);
   }
+
   h5 {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 500; /* font-medium */
+    font-size: 1.25rem;
+    font-weight: 500;
     line-height: 1.4;
+    color: var(--color-text-secondary);
   }
+
   h6 {
-    font-size: 1.125rem; /* text-lg */
-    font-weight: 500; /* font-medium */
+    font-size: 1.125rem;
+    font-weight: 500;
     line-height: 1.45;
+    color: var(--color-text-secondary);
   }
+
   p {
     text-align: start;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+
+  /* Links */
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  /* Focus States for Accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-secondary-light);
+    color: white;
   }
 }

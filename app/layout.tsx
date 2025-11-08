@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { Toaster } from "sonner";
 
 import "./styles/globals.css";
 import Navbar from "@/components/utils/Navbar";
@@ -23,6 +24,15 @@ export default async function RootLayout({
           <NextIntlClientProvider>
             <Navbar />
             {children}
+            <Toaster
+              position="top-center"
+              dir="rtl"
+              toastOptions={{
+                style: {
+                  fontFamily: 'var(--font-yekan)',
+                },
+              }}
+            />
           </NextIntlClientProvider>
         </ReactQueryProvider>
       </body>
