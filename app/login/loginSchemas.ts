@@ -17,5 +17,5 @@ export const familySchema = z
 
 export const otpSchema = z
   .string()
-  .min(6, "کد تأیید باید 6 رقم باشد")
-  .max(6, "کد تأیید باید 6 رقم باشد");
+  .min(4, "کد تأیید باید 4 رقم باشد")
+  .max(4, "کد تأیید باید 4 رقم باشد");
