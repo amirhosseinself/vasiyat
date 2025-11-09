@@ -3,7 +3,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Phone, Key, User, ArrowRight, Shield, CheckCircle } from "lucide-react";
+import {
+  Heart,
+  Phone,
+  Key,
+  User,
+  ArrowRight,
+  Shield,
+  CheckCircle,
+} from "lucide-react";
 import Image from "next/image";
 import Button from "@/components/utils/Button";
 import FloatingInput from "@/components/utils/FloatingInput";
@@ -137,14 +145,19 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-purple-50/30 to-blue-50">
       {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-emotional opacity-20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-40 right-0 w-96 h-96 bg-gradient-emotional opacity-5 rounded-full blur-3xl animate-ping" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-secondary opacity-15 rounded-full blur-3xl" />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
               <circle cx="20" cy="20" r="1" fill="currentColor" />
             </pattern>
           </defs>
@@ -152,7 +165,7 @@ const LoginPage = () => {
         </svg>
       </div>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 py-12">
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 pt-24 pb-8">
         <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Branding */}
           <motion.div
@@ -169,14 +182,16 @@ const LoginPage = () => {
             </div>
 
             <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              میراث معنوی خود را<br />
+              میراث معنوی خود را
+              <br />
               <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
                 برای عزیزانتان بسازید
               </span>
             </h2>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              یادگار، پلتفرمی امن برای ثبت پیام‌ها، خاطرات و وصایای شماست که در زمان مناسب به دست عزیزانتان خواهد رسید.
+              یادگار، پلتفرمی امن برای ثبت پیام‌ها، خاطرات و وصایای شماست که در
+              زمان مناسب به دست عزیزانتان خواهد رسید.
             </p>
 
             {/* Features */}
@@ -196,20 +211,11 @@ const LoginPage = () => {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <feature.icon className="text-primary" size={24} />
                   </div>
-                  <span className="text-gray-700 font-medium">{feature.text}</span>
+                  <span className="text-gray-700 font-medium">
+                    {feature.text}
+                  </span>
                 </motion.div>
               ))}
-            </div>
-
-            {/* Decorative Image (optional) */}
-            <div className="mt-12 relative w-full h-64 rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/home/emotional.jpg"
-                alt="Background"
-                fill
-                className="object-cover opacity-60"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
             </div>
           </motion.div>
 
@@ -265,9 +271,7 @@ const LoginPage = () => {
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">
                       {currentStep.title}
                     </h2>
-                    <p className="text-gray-600">
-                      {currentStep.subtitle}
-                    </p>
+                    <p className="text-gray-600">{currentStep.subtitle}</p>
                   </motion.div>
                 </AnimatePresence>
               </div>
