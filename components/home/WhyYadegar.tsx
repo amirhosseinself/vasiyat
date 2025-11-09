@@ -73,7 +73,7 @@ const WhyYadegar = () => {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed"
+            className="text-gray-600 text-lg md:text-xl leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

@@ -80,8 +80,9 @@ const Footer = () => {
                 {t("appName")}
               </h3>
             </div>
-            <p className="text-gray-600 leading-relaxed mb-6 max-w-md">
-              یادگار، پلتفرمی امن و معتبر برای ثبت و انتقال پیام‌های ارزشمند شما به عزیزانتان. خاطرات و میراث معنوی خود را با اطمینان حفظ کنید.
+            <p className="text-gray-600 leading-relaxed mb-6 max-w-[400px]">
+              یادگار، پلتفرمی امن و معتبر برای ثبت و انتقال پیام‌های ارزشمند شما
+              به عزیزانتان. خاطرات و میراث معنوی خود را با اطمینان حفظ کنید.
             </p>
             <div className="flex gap-4 rtl">
               {socialLinks.map((social, index) => (
@@ -101,11 +102,7 @@ const Footer = () => {
 
           {/* Links Sections */}
           {footerLinks.map((section, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="rtl"
-            >
+            <motion.div key={index} variants={itemVariants} className="rtl">
               <h4 className="text-lg font-bold text-primary mb-4 font-yekan">
                 {section.title}
               </h4>
@@ -174,13 +171,22 @@ const Footer = () => {
             © {new Date().getFullYear()} {t("appName")}. تمامی حقوق محفوظ است.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-gray-600 hover:text-primary transition-colors">
+            <Link
+              href="#"
+              className="text-gray-600 hover:text-primary transition-colors"
+            >
               قوانین و مقررات
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-primary transition-colors">
+            <Link
+              href="#"
+              className="text-gray-600 hover:text-primary transition-colors"
+            >
               حریم خصوصی
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-primary transition-colors">
+            <Link
+              href="#"
+              className="text-gray-600 hover:text-primary transition-colors"
+            >
               شرایط استفاده
             </Link>
           </div>

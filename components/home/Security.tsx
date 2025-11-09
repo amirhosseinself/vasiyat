@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ShieldCheck, Lock, Cloud, Check } from "lucide-react";
-import Image from "next/image";
 
 interface itemType {
   title: string;
@@ -28,16 +27,16 @@ const Security = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Right Side - Image & Visual */}
           <motion.div
-            className="relative order-1 lg:order-2"
+            className="relative order-1 lg:order-2 size-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             {/* Security Shield Illustration */}
-            <div className="relative">
+            <div className="relative size-full">
               {/* Main Shield */}
-              <div className="relative w-full aspect-square max-w-md mx-auto">
+              <div className="relative size-full aspect-square">
                 {/* Animated Rings */}
                 {[1, 2, 3].map((ring) => (
                   <motion.div
@@ -46,12 +45,12 @@ const Security = () => {
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{
                       scale: [0.8, 1.2, 0.8],
-                      opacity: [0.2, 0.1, 0.2]
+                      opacity: [0.2, 0.1, 0.2],
                     }}
                     transition={{
                       duration: 3,
                       repeat: Infinity,
-                      delay: ring * 0.5
+                      delay: ring * 0.5,
                     }}
                   />
                 ))}
@@ -65,7 +64,7 @@ const Security = () => {
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 >
                   <div className="relative">
@@ -83,17 +82,17 @@ const Security = () => {
                   key={index}
                   className="absolute bg-white rounded-2xl p-4 shadow-xl"
                   style={{
-                    top: index === 0 ? '10%' : index === 1 ? '50%' : '80%',
-                    left: index === 0 ? '-5%' : index === 1 ? '-10%' : '5%',
+                    top: index === 0 ? "20%" : index === 1 ? "50%" : "77%",
+                    left: index === 0 ? "15%" : index === 1 ? "0%" : "15%",
                   }}
                   animate={{
                     y: [0, -15, 0],
-                    rotate: [0, 5, 0]
+                    rotate: [0, 5, 0],
                   }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    delay: index * 0.5
+                    delay: index * 0.5,
                   }}
                 >
                   <Icon className="text-primary" size={32} />
@@ -136,9 +135,12 @@ const Security = () => {
                     viewport={{ once: true }}
                   >
                     {/* Icon */}
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <Icon className="text-primary group-hover:text-white transition-colors" size={24} />
+                        <Icon
+                          className="text-primary group-hover:text-white transition-colors"
+                          size={24}
+                        />
                       </div>
                     </div>
 

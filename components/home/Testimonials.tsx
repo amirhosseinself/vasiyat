@@ -43,9 +43,9 @@ const Testimonials = () => {
         </svg>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="relative z-10">
         {/* Header */}
-        <div className="text-center mb-20 rtl">
+        <div className="text-center mb-20 rtl container-custom">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -68,7 +68,7 @@ const Testimonials = () => {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed"
+            className="text-gray-600 text-lg md:text-xl leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -79,7 +79,7 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonial Slider */}
-        <div className="max-w-6xl mx-auto">
+        <div className="w-full">
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={30}
@@ -93,9 +93,9 @@ const Testimonials = () => {
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             breakpoints={{
               768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
             }}
-            className="pb-16"
+            className="pb-12!"
           >
             {testimonials.map((item: itemType, index: number) => {
               return (
@@ -129,7 +129,7 @@ const Testimonials = () => {
 
                       {/* Testimonial Text */}
                       <p className="text-gray-700 leading-relaxed mb-6 flex-1 text-lg">
-                        "{item.text}"
+                        "{item.text}&quot;
                       </p>
 
                       {/* Author */}

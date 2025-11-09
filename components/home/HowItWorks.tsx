@@ -88,11 +88,7 @@ const HowItWorks = () => {
                 >
                   <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 rtl">
                     {/* Step Number */}
-                    <div
-                      className={`flex items-center gap-4 mb-6 ${
-                        isEven ? "" : "justify-end"
-                      }`}
-                    >
+                    <div className={`flex items-center gap-4 mb-6`}>
                       <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white font-bold text-xl">
                         {index + 1}
                       </div>
