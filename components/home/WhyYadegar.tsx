@@ -14,19 +14,38 @@ const WhyYadegar = () => {
   const points = t.raw("points");
   const icons = [Heart, PenLine, Shield];
   const colors = [
-    { bg: "from-blue-500 to-blue-700", light: "bg-blue-50", border: "border-blue-200" },
-    { bg: "from-purple-500 to-purple-700", light: "bg-purple-50", border: "border-purple-200" },
-    { bg: "from-indigo-500 to-indigo-700", light: "bg-indigo-50", border: "border-indigo-200" },
+    {
+      bg: "from-blue-500 to-blue-700",
+      light: "bg-blue-50",
+      border: "border-blue-200",
+    },
+    {
+      bg: "from-purple-500 to-purple-700",
+      light: "bg-purple-50",
+      border: "border-purple-200",
+    },
+    {
+      bg: "from-indigo-500 to-indigo-700",
+      light: "bg-indigo-50",
+      border: "border-indigo-200",
+    },
   ];
 
   return (
-    <section className="py-32 bg-gray-50 relative overflow-hidden" id="why-wasiyatnameh">
+    <section
+      className="py-32 bg-gray-50 relative overflow-hidden"
+      id="why-wasiyatnameh"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
       <div className="container-custom relative z-10">
@@ -54,7 +73,7 @@ const WhyYadegar = () => {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed"
+            className="text-gray-600 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -80,18 +99,24 @@ const WhyYadegar = () => {
                   duration: 0.6,
                   delay: index * 0.15,
                   type: "spring",
-                  stiffness: 100
+                  stiffness: 100,
                 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
                 {/* Card */}
-                <div className={`relative h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 ${color.border} overflow-hidden group-hover:-translate-y-2`}>
+                <div
+                  className={`relative h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 ${color.border} overflow-hidden group-hover:-translate-y-2`}
+                >
                   {/* Decorative Circle Background */}
-                  <div className={`absolute -top-10 -right-10 w-40 h-40 ${color.light} rounded-full blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-700`} />
+                  <div
+                    className={`absolute -top-10 -right-10 w-40 h-40 ${color.light} rounded-full blur-3xl opacity-50 group-hover:scale-150 transition-transform duration-700`}
+                  />
 
                   {/* Icon with Gradient Background */}
                   <div className="relative mb-6">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${color.bg} shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                    <div
+                      className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${color.bg} shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                    >
                       <Icon className="text-white" size={40} />
                     </div>
                   </div>
@@ -107,7 +132,9 @@ const WhyYadegar = () => {
                   </div>
 
                   {/* Hover Effect Line */}
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color.bg} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color.bg} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+                  />
                 </div>
               </motion.div>
             );

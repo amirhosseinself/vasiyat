@@ -16,7 +16,10 @@ const HowItWorks = () => {
   const steps = t.raw("steps");
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden" id="how-it-works">
+    <section
+      className="py-24 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden"
+      id="how-it-works"
+    >
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
@@ -47,7 +50,7 @@ const HowItWorks = () => {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed"
+            className="text-gray-600 w-full text-lg md:text-xl leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -78,10 +81,18 @@ const HowItWorks = () => {
                 viewport={{ once: true, margin: "-100px" }}
               >
                 {/* Content Card */}
-                <div className={`w-full md:w-5/12 ${isEven ? "md:text-left" : "md:text-right"}`}>
+                <div
+                  className={`w-full md:w-5/12 ${
+                    isEven ? "md:text-left" : "md:text-right"
+                  }`}
+                >
                   <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-100 rtl">
                     {/* Step Number */}
-                    <div className={`flex items-center gap-4 mb-6 ${isEven ? "" : "justify-end"}`}>
+                    <div
+                      className={`flex items-center gap-4 mb-6 ${
+                        isEven ? "" : "justify-end"
+                      }`}
+                    >
                       <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white font-bold text-xl">
                         {index + 1}
                       </div>
@@ -97,7 +108,7 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Center Icon */}
-                <div className="hidden md:flex absolute right-1/2 -translate-x-1/2 w-24 h-24 items-center justify-center">
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-24 h-24 items-center justify-center">
                   <motion.div
                     className="relative"
                     whileHover={{ scale: 1.1, rotate: 5 }}

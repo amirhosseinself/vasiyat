@@ -16,13 +16,27 @@ const Testimonials = () => {
   const testimonials = t.raw("list");
 
   return (
-    <section className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" id="testimonials">
+    <section
+      className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
+      id="testimonials"
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="testimonial-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
-              <circle cx="30" cy="30" r="2" fill="currentColor" className="text-primary" />
+            <pattern
+              id="testimonial-pattern"
+              width="60"
+              height="60"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle
+                cx="30"
+                cy="30"
+                r="2"
+                fill="currentColor"
+                className="text-primary"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#testimonial-pattern)" />
@@ -54,7 +68,7 @@ const Testimonials = () => {
           </motion.h2>
 
           <motion.p
-            className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed"
+            className="text-gray-600 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -72,7 +86,7 @@ const Testimonials = () => {
             slidesPerView={1}
             pagination={{
               clickable: true,
-              bulletActiveClass: 'swiper-pagination-bullet-active !bg-primary',
+              bulletActiveClass: "swiper-pagination-bullet-active !bg-primary",
             }}
             loop={true}
             centeredSlides={true}
@@ -126,7 +140,9 @@ const Testimonials = () => {
                         </div>
 
                         <div>
-                          <h5 className="font-bold text-gray-900">{item.role}</h5>
+                          <h5 className="font-bold text-gray-900">
+                            {item.role}
+                          </h5>
                           <p className="text-sm text-gray-500">کاربر یادگار</p>
                         </div>
                       </div>

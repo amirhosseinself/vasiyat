@@ -26,7 +26,7 @@ const EmotionalSection = () => {
 
       {/* ✨ متن روی تصویر */}
       <motion.div
-        className="relative z-10 max-w-3xl px-6 text-white"
+        className="relative z-10 max-w-4xl px-6 text-white"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
