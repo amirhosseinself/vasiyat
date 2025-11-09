@@ -16,10 +16,10 @@
   --color-accent-light: #ecc94b; /* Light gold - warmth */
   --color-accent-soft: #fbd38d; /* Soft gold - gentle touch */
 
-  /* 🌅 Emotional Gradient Colors */
-  --color-gradient-start: #667eea; /* Indigo - dreams */
-  --color-gradient-middle: #764ba2; /* Purple - memory */
-  --color-gradient-end: #f093fb; /* Pink - love */
+  /* 🌅 Professional Gradient Colors */
+  --color-gradient-start: #0f172a; /* Deep slate - professionalism */
+  --color-gradient-middle: #1e3a8a; /* Deep blue - stability */
+  --color-gradient-end: #1e40af; /* Strong blue - trust */
 
   /* 🤍 Neutral & Background Colors */
   --color-background: #f7fafc; /* Very light gray - peaceful */

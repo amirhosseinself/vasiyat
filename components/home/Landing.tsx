@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { Heart, ArrowDown, Sparkles } from "lucide-react";
+import { Heart, ArrowDown, Shield, Users, Clock } from "lucide-react";
 import Button from "@/components/utils/Button";
 
 const Landing = () => {
@@ -12,15 +12,14 @@ const Landing = () => {
 
   // Parallax effect for background
   const imageY = useTransform(scrollY, [0, 500], [0, 150]);
-  const contentY = useTransform(scrollY, [0, 500], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const contentY = useTransform(scrollY, [0, 500], [0, -30]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-blue-50 via-purple-50 to-white" dir="rtl">
-      {/* Animated Background Image with Parallax */}
+    <div className="relative min-h-screen overflow-hidden bg-white" dir="rtl">
+      {/* Background Image with Dark Overlay */}
       <motion.div
         style={{ y: imageY }}
-        className="absolute top-0 left-0 right-0 h-[70vh] z-0"
+        className="absolute top-0 left-0 right-0 h-full z-0"
       >
         <div className="relative w-full h-full">
           <Image
@@ -31,48 +30,16 @@ const Landing = () => {
             priority
             quality={90}
           />
-          {/* Gradient overlays for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/20" />
+          {/* Dark overlay for better contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
         </div>
       </motion.div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-emotional opacity-20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-40 right-10 w-96 h-96 bg-gradient-secondary opacity-15 rounded-full blur-3xl" />
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [null, Math.random() * -100 - 50],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          >
-            <Sparkles
-              className="text-accent/30"
-              size={Math.random() * 20 + 10}
-            />
-          </motion.div>
-        ))}
-      </div>
-
       {/* Main Content */}
       <motion.main
-        style={{ y: contentY, opacity }}
-        className="relative z-10 container-custom flex flex-col items-center text-center pt-32 md:pt-40 pb-20"
+        style={{ y: contentY }}
+        className="relative z-10 container-custom flex flex-col items-center text-center pt-32 md:pt-48 pb-24 min-h-screen justify-center"
       >
         {/* Animated Heart Icon */}
         <motion.div
@@ -84,7 +51,7 @@ const Landing = () => {
             damping: 15,
             delay: 0.2,
           }}
-          className="mb-6"
+          className="mb-8"
         >
           <div className="relative">
             <motion.div
@@ -96,63 +63,73 @@ const Landing = () => {
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
-              className="absolute inset-0 bg-accent/20 rounded-full blur-xl"
+              className="absolute inset-0 bg-accent/30 rounded-full blur-2xl"
             />
             <Heart
-              className="text-accent relative z-10"
+              className="text-white relative z-10 drop-shadow-2xl"
               fill="currentColor"
-              size={64}
+              size={72}
             />
           </div>
         </motion.div>
 
-        {/* Title with elegant animation */}
+        {/* Title - Simple and Clear */}
         <motion.h1
-          className="text-5xl md:text-7xl max-w-4xl leading-tight font-bold text-gray-900 mb-6"
+          className="text-5xl md:text-7xl lg:text-8xl max-w-5xl leading-tight font-extrabold text-white mb-8 drop-shadow-2xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            {t("heroTitle")}
-          </span>
+          {t("heroTitle")}
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Wider for better readability */}
         <motion.p
-          className="text-xl md:text-2xl text-gray-700 mt-4 max-w-3xl leading-relaxed"
+          className="text-xl md:text-2xl lg:text-3xl text-white/95 mt-4 max-w-4xl leading-relaxed font-medium drop-shadow-lg px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           {t("heroSubtitle")}
         </motion.p>
 
-        {/* Trust Badge */}
+        {/* Trust Features - Horizontal Cards */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-6 px-6 py-3 bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-gray-200"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl w-full px-4"
         >
-          <p className="text-sm text-gray-600 flex items-center gap-2">
-            <Heart className="text-accent" fill="currentColor" size={16} />
-            <span className="font-medium">قابل اعتماد، امن و رمزگذاری‌شده</span>
-          </p>
+          {[
+            { icon: Shield, text: "امنیت کامل" },
+            { icon: Clock, text: "تحویل به‌موقع" },
+            { icon: Users, text: "قابل اعتماد" },
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 + index * 0.1 }}
+              className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20"
+            >
+              <feature.icon className="text-white" size={24} />
+              <span className="text-white font-medium text-lg">{feature.text}</span>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4"
+          transition={{ duration: 0.8, delay: 1.3 }}
+          className="mt-12 flex flex-col sm:flex-row gap-4"
         >
           <Button
-            variant="gradient"
+            variant="primary"
             size="xl"
             href="/login"
-            icon={<Heart size={20} />}
+            className="shadow-2xl bg-white text-primary hover:bg-gray-100"
           >
             {t("start")}
           </Button>
@@ -160,39 +137,10 @@ const Landing = () => {
             variant="outline"
             size="xl"
             href="#how-it-works"
+            className="border-2 border-white text-white hover:bg-white/10"
           >
             بیشتر بدانید
           </Button>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="mt-16 grid grid-cols-3 gap-8 max-w-2xl"
-        >
-          {[
-            { value: "10,000+", label: "کاربر فعال" },
-            { value: "50,000+", label: "یادگار ثبت‌شده" },
-            { value: "99.9%", label: "امنیت" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 200,
-                  delay: 1.2 + index * 0.1,
-                }}
-                className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-              >
-                {stat.value}
-              </motion.div>
-              <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-            </div>
-          ))}
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -200,12 +148,12 @@ const Landing = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
           transition={{
-            opacity: { delay: 1.5 },
+            opacity: { delay: 1.8 },
             y: { duration: 1.5, repeat: Infinity },
           }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="flex flex-col items-center gap-2 text-gray-500">
+          <div className="flex flex-col items-center gap-2 text-white/80">
             <span className="text-sm">ادامه مطالب</span>
             <ArrowDown size={24} />
           </div>
@@ -213,7 +161,7 @@ const Landing = () => {
       </motion.main>
 
       {/* Bottom wave decoration */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-10">
         <svg
           className="w-full h-24 md:h-32"
           viewBox="0 0 1440 120"
